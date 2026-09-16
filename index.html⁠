@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Pronósticos Loterías RD</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #121212; color: #fff; text-align: center; padding: 20px; }
+        .card { background: #1e1e1e; padding: 25px; border-radius: 18px; margin-top: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        h1 { color: #0a84ff; font-size: 24px; margin-bottom: 5px; }
+        p { color: #aaa; font-size: 14px; }
+        input { width: 80%; padding: 14px; font-size: 20px; border-radius: 12px; border: 1px solid #333; margin: 15px 0; text-align: center; background: #2c2c2e; color: #fff; }
+        button { background: #30d158; color: #000; border: none; padding: 15px; font-size: 18px; font-weight: bold; border-radius: 12px; width: 88%; margin-top: 10px; cursor: pointer; }
+        .result { font-size: 36px; font-weight: bold; color: #ffd60a; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Loterías</h1>
+    <p>Fórmula de Probabilidad Áurea</p>
+    <div class="card">
+        <label>Ingresa el número anterior:</label><br>
+        <input type="number" id="numInput" placeholder="Ej. 85">
+        <br>
+        <button onclick="calcular()">CALCULAR PRONÓSTICO</button>
+        <div class="result" id="resBox">--</div>
+    </div>
+
+    <script>
+        function calcular() {
+            let val = parseFloat(document.getElementById('numInput').value);
+            if (isNaN(val)) {
+                document.getElementById('resBox').innerText = "Ingresa un número";
+                return;
+            }
+            let res = Math.round(val / 1.618) % 100;
+            let formatted = res < 10 ? '0' + res : res;
+            document.getElementById('resBox').innerText = "Sugerido: " + formatted;
+        }
+    </script>
+</body>
+</html>
